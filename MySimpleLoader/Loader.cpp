@@ -58,7 +58,7 @@ int MyModel::loadModel(char* filename)
 		// Go to end of the file
 		myOBJFile.seekg(0, std::ios::end);	
 		// get file size
-		long fileSize = myOBJFile.tellg();									
+		long long fileSize = myOBJFile.tellg();									
 		myOBJFile.seekg(0, std::ios::beg);										
 		// Allocate memory for the vertices
 		vertexBuffer = (float*)malloc(fileSize);	
@@ -192,6 +192,7 @@ MyGlutWindow win;
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(0.2f, 0.3f, 0.8f, 1.0f);
 	glLoadIdentity();
 	gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
 	glPushMatrix();
@@ -220,9 +221,9 @@ void initialize()
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-	GLfloat amb_light[] = { 0.1, 0.1, 0.1, 1.0 };
-	GLfloat diffuse[] = { 0.6, 0.6, 0.6, 1 };
-	GLfloat specular[] = { 0.7, 0.7, 0.3, 1 };
+	GLfloat amb_light[] = { 0.1f, 0.1f, 0.1f, 1.0f };
+	GLfloat diffuse[] = { 0.6f, 0.6f, 0.6f, 1.0f };
+	GLfloat specular[] = { 0.7f, 0.7f, 0.3f, 1.0f };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb_light);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
